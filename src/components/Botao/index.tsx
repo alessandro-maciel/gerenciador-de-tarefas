@@ -2,13 +2,15 @@ import React from "react";
 import style from './Botao.module.scss'
 
 interface Props {
-    texto?: string,
+    tipo?: "button" | "submit" | "reset" | undefined,
     children: React.ReactNode
 }
 
 export default function Botao(props: Props){
+    const type = props.tipo ?? 'button';
+
     return (
-        <button className={style.botao}>
+        <button type={type} className={style.botao}>
             {props.children}
         </button>
     );
