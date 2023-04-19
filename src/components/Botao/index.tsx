@@ -1,10 +1,15 @@
 import React from "react";
 import style from './Botao.module.scss'
 
-export default function Botao(){
+interface Props {
+    texto?: string,
+    children: React.ReactNode
+}
+
+export default function Botao(props: Props){
     return (
         <button className={style.botao}>
-            Botão
+            {props.children}
         </button>
     );
 }
