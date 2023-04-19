@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useState } from "react";
 import Botao from "../Botao";
 import style from './Formulario.module.scss'
 import Tarefa from "../../types/tarefa";
+import { v4 as uuidV4 } from 'uuid';
 
 export default function Formulario({setTarefas }: { setTarefas: React.Dispatch<React.SetStateAction<Tarefa[]>>}){
     const [tarefa, setTarefa] = useState('');
@@ -9,7 +10,13 @@ export default function Formulario({setTarefas }: { setTarefas: React.Dispatch<R
 
     const adicionarTarefa = (event: SyntheticEvent) => {  
         event.preventDefault();
-        setTarefas(tarefas => [...tarefas, {tarefa: tarefa, tempo: tempo }]);
+        setTarefas(tarefas => [...tarefas, {
+            tarefa: tarefa, 
+            tempo: tempo,
+            selecionado: false,
+            completado: false, 
+            id: uuidV4()
+        }]);
 
         setTarefa('');
         setTempo('00:00:00');
