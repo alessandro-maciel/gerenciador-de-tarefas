@@ -3,10 +3,14 @@ import React from "react";
 import style from '../Lista.module.scss';
 import Tarefa from "../../../types/tarefa";
 
-export default function Item(item: Tarefa){
-    console.log(item);
+interface Props extends Tarefa {
+    selecionaTarefa: (tarefaSelecionada: Tarefa) => void;
+}
+
+export default function Item(item: Props){
+    
     return (
-        <li className={style.item}>
+        <li className={`${style.item} ${item.selecionado ? style.itemSelecionado : ''}`} onClick={() => item.selecionaTarefa(item)}>
             <h3>
                 {item.tarefa}
             </h3>
