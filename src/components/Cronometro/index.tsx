@@ -7,6 +7,7 @@ import Tarefa from "../../types/tarefa";
 
 interface Props {
     selecionado: Tarefa | undefined,
+    finalizarTarefa: () => void,
 }
 
 export default function Cronometro(props: Props){
@@ -25,6 +26,8 @@ export default function Cronometro(props: Props){
 
                 return regressiva(contador - 1);
             }
+            
+            props.finalizarTarefa();
         }, 1000);
     }
 
