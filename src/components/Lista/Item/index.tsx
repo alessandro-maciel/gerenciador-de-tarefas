@@ -1,6 +1,5 @@
 import React from "react";
-
-import style from '../Lista.module.scss';
+import style from './Item.module.scss';
 import Tarefa from "../../../types/tarefa";
 
 interface Props extends Tarefa {
@@ -8,7 +7,6 @@ interface Props extends Tarefa {
 }
 
 export default function Item(item: Props){
-    
     return (
         <li className={`${style.item} ${item.selecionado ? style.itemSelecionado : ''}`} onClick={() => item.selecionaTarefa(item)}>
             <h3>
